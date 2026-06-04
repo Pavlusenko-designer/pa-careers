@@ -1,0 +1,1199 @@
+/*******************************************************************************
+ * Copyright 2022 Adobe
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ ******************************************************************************/
+form:not(.cmp-adaptiveform-container--edit) [data-cmp-visible="false"] {
+    display: none !important;
+}
+.cmp-adaptiveform-container--loading{
+
+}
+/*******************************************************************************
+ * Copyright 2022 Adobe
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ ******************************************************************************/
+.cmp-adaptiveform-datepicker {
+
+}
+
+.cmp-adaptiveform-datepicker__widget {
+
+}
+
+.cmp-adaptiveform-datepicker__label {
+
+}
+.cmp-adaptiveform-datepicker__label-container{
+  
+}
+
+.cmp-adaptiveform-datepicker__longdescription {
+
+}
+
+.cmp-adaptiveform-datepicker__shortdescription {
+
+}
+
+.cmp-adaptiveform-datepicker__questionmark {
+
+}
+
+.cmp-adaptiveform-datepicker__questionmark {
+
+}
+/*******************************************************************************
+ * Copyright 2023 Adobe
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ ******************************************************************************/
+
+.datetimepicker {
+    border: none;
+    background-color: #FFF;
+    display: none;
+    position: absolute;
+    cursor: default;
+    z-index: 100;
+    outline: solid #CCCCCC 2px;
+    flex-direction: column;
+    width: 433px;
+    max-width: calc(100vw - 20px);
+    box-sizing: border-box;
+}
+
+.datetimepicker .dp-clear {
+    overflow: auto;
+    background-color: #F5F5F5;
+    text-align: center;
+}
+
+.datetimepicker .dp-clear a {
+    cursor: pointer;
+    height: 40px;
+    line-height: 40px;
+    padding: 0px 5px 0px 5px;
+    text-align: center;
+    display: inline-block;
+    font-size: 0.875rem;
+    color: #6d6d6d;
+}
+
+.datetimepicker-notouch .dp-close a:hover {
+    color: #c8bbff;
+}
+
+.datetimepicker .dp-header {
+    height: 40px;
+    line-height: 40px;
+    color: #555555;
+    margin-bottom: 5px;
+    background-color: #E6E6E6;
+    display: flex;
+    justify-content: space-between;
+}
+
+.datetimepicker .dp-header .dp-leftnav,
+.datetimepicker .dp-header .dp-rightnav,
+.datetimepicker .dp-header .dp-caption {
+    float: left;
+    text-align: center;
+    cursor: pointer;
+    height: 40px;
+}
+
+.datetimepicker-notouch .dp-header .dp-caption:not(.disabled):hover {
+    color: #969696;
+}
+
+.datetimepicker .dp-header .dp-rightnav {
+    float: right;
+    background: url("../../../../../etc.clientlibs/core/fd/components/form/datepicker/v1/datepicker/clientlibs/site/resources/rightnav.png") no-repeat center center;
+    width: 40px;
+}
+
+.datetimepicker .dp-header .dp-leftnav {
+    width: 40px;
+    background: url("../../../../../etc.clientlibs/core/fd/components/form/datepicker/v1/datepicker/clientlibs/site/resources/leftnav.png") no-repeat center center;
+}
+
+.datetimepicker .dp-header .dp-rightnav:hover {
+    background: url("../../../../../etc.clientlibs/core/fd/components/form/datepicker/v1/datepicker/clientlibs/site/resources/rightnav_hover.png") no-repeat center center;
+}
+
+.datetimepicker .dp-header .dp-leftnav:hover {
+    background: url("../../../../../etc.clientlibs/core/fd/components/form/datepicker/v1/datepicker/clientlibs/site/resources/leftnav_hover.png") no-repeat center center;
+}
+
+.datetimepicker .view {
+    display: none;
+}
+
+.datetimepicker .view ul {
+    display: flex;
+    justify-content: space-around;
+    list-style: none;
+    margin: 0;
+    padding: 5px;
+    overflow: hidden;
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+}
+
+.datetimepicker .view ul li {
+    float: left;
+    padding: 5px;
+    text-align: center;
+    border: none;
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    color: #666666;
+    min-width: 40px;
+    flex: 0 0 calc(100% / 7);
+}
+
+.datetimepicker .view ul.header li {
+    color: #555555;
+}
+
+.datetimepicker .view ul:not(.header) li:not(.disabled) {
+    cursor: pointer;
+}
+
+.datetimepicker .view ul.header {
+    color: #000;
+    background-color: #FFF;
+    border-bottom: #E6E6E6 1px solid;
+    display: flex;
+    justify-content: space-around;
+}
+
+.datetimepicker-notouch .view ul:not(.header) li:not(.disabled):hover {
+    color: black;
+    background-color: #E6E6E6;
+    opacity: 0.5;
+}
+
+.datetimepicker .view ul li.disabled {
+    color: #CCCCCC;
+}
+
+.datetimepicker .view ul li.dp-selected {
+    outline: none;
+    background-color: #666666;
+    color: #FFFFFF;
+    opacity: 1.0;
+}
+
+.datetimepicker .view ul li.dp-focus {
+    border: 1px dashed black;
+}
+
+.cmp-adaptiveform-datepicker__calendar-icon {
+    position: absolute;
+    top: 41px;
+    right: 30px;
+    z-index: 10;
+    background: url("../../../../../etc.clientlibs/core/fd/components/form/datepicker/v1/datepicker/clientlibs/site/resources/calendar.png") no-repeat center center;
+    background-size: contain;
+    width: 24px;
+    height: 24px;
+}
+
+.datefieldwidget.widgetreadonly .cmp-adaptiveform-datepicker__calendar-icon {
+    display: none;
+}
+
+/* Responsive styles for WCAG 1.4.10 Reflow compliance at 320px */
+@media (max-width: 400px) {
+    .datetimepicker {
+        width: calc(100vw - 20px);
+        left: 10px !important;
+        right: 10px !important;
+    }
+
+    .datetimepicker .view ul {
+        padding: 2px;
+    }
+
+    .datetimepicker .view ul li {
+        min-width: 30px;
+        padding: 3px 1px;
+        font-size: 0.75rem;
+        flex: 0 0 calc(100% / 7);
+    }
+
+    .datetimepicker .dp-header .dp-caption {
+        flex: 1;
+        font-size: 0.875rem;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+    }
+
+    .datetimepicker .dp-header .dp-leftnav,
+    .datetimepicker .dp-header .dp-rightnav {
+        min-width: 35px;
+        width: 35px;
+        flex-shrink: 0;
+    }
+}
+/*******************************************************************************
+ * Copyright 2022 Adobe
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ ******************************************************************************/
+
+.cmp-adaptiveform-textinput {
+
+}
+
+.cmp-adaptiveform-textinput__widget {
+
+}
+textarea.cmp-adaptiveform-textinput__widget{
+  
+}
+
+.cmp-adaptiveform-textinput__label {
+
+}
+.cmp-adaptiveform-textinput__label-container{
+  
+}
+
+.cmp-adaptiveform-textinput__longdescription {
+}
+
+.cmp-adaptiveform-textinput__shortdescription {
+}
+
+.cmp-adaptiveform-textinput__questionmark {
+
+}
+
+/*******************************************************************************
+ * Copyright 2022 Adobe
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ ******************************************************************************/
+
+.cmp-adaptiveform-telephoneinput {
+
+}
+
+.cmp-adaptiveform-telephoneinput__widget {
+
+}
+
+.cmp-adaptiveform-telephoneinput__label {
+
+}
+.cmp-adaptiveform-telephoneinput__label-container{
+  
+}
+
+.cmp-adaptiveform-telephoneinput__longdescription {
+}
+
+.cmp-adaptiveform-telephoneinput__shortdescription {
+}
+
+.cmp-adaptiveform-telephoneinput__questionmark {
+
+}
+
+/*******************************************************************************
+ * Copyright 2022 Adobe
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ ******************************************************************************/
+
+.cmp-adaptiveform-emailinput {
+
+}
+
+.cmp-adaptiveform-emailinput__widget {
+
+}
+
+.cmp-adaptiveform-emailinput__label {
+
+}
+.cmp-adaptiveform-emailinput__label-container{
+  
+}
+
+.cmp-adaptiveform-emailinput__longdescription {
+}
+
+.cmp-adaptiveform-emailinput__shortdescription {
+}
+
+.cmp-adaptiveform-emailinput__questionmark {
+}
+
+/*******************************************************************************
+ * Copyright 2022 Adobe
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ ******************************************************************************/
+
+.cmp-adaptiveform-textinput {
+
+}
+
+.cmp-adaptiveform-textinput__widget {
+
+}
+textarea.cmp-adaptiveform-textinput__widget{
+  
+}
+
+.cmp-adaptiveform-textinput__label {
+
+}
+.cmp-adaptiveform-textinput__label-container{
+  
+}
+
+.cmp-adaptiveform-textinput__longdescription {
+}
+
+.cmp-adaptiveform-textinput__shortdescription {
+}
+
+.cmp-adaptiveform-textinput__questionmark {
+
+}
+
+.cmp-adaptiveform-numberinput {
+
+}
+
+.cmp-adaptiveform-numberinput__widget {
+
+}
+
+.cmp-adaptiveform-numberinput__label {
+
+}
+.cmp-adaptiveform-numberinput__label-container{
+  
+}
+
+.cmp-adaptiveform-numberinput__longdescription {
+}
+
+.cmp-adaptiveform-numberinput__shortdescription {
+}
+
+.cmp-adaptiveform-numberinput__questionmark {
+
+}
+/*******************************************************************************
+ * Copyright 2022 Adobe
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ ******************************************************************************/
+
+.cmp-container {
+
+}
+
+.cmp-container__label {
+
+}
+.cmp-container__label-container{
+  
+}
+
+.cmp-container__longdescription {
+}
+
+.cmp-container__shortdescription {
+}
+
+.cmp-container__questionmark {
+
+}
+
+/*******************************************************************************
+ * Copyright 2022 Adobe
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ ******************************************************************************/
+
+.cmp-adaptiveform-text {
+
+}
+
+.cmp-adaptiveform-text__widget {
+
+}
+/**
+## BEM Description
+BLOCK cmp-adaptiveform-checkboxgroup
+    ELEMENT cmp-adaptiveform-checkboxgroup__label
+    ELEMENT cmp-adaptiveform-checkboxgroup__widget
+    ELEMENT cmp-adaptiveform-checkboxgroup__questionmark
+    ELEMENT cmp-adaptiveform-checkboxgroup__shortdescription
+    ELEMENT cmp-adaptiveform-checkboxgroup__longdescription
+*/
+
+.cmp-adaptiveform-checkboxgroup {
+
+}
+
+.cmp-adaptiveform-checkboxgroup__widget {
+
+}
+
+.cmp-adaptiveform-checkboxgroup__label {
+
+}
+.cmp-adaptiveform-checkboxgroup__label-container{
+  
+}
+
+.cmp-adaptiveform-checkboxgroup__widget__label {
+}
+
+.cmp-adaptiveform-checkboxgroup__longdescription {
+
+}
+
+.cmp-adaptiveform-checkboxgroup__shortdescription {
+
+}
+
+.cmp-adaptiveform-checkboxgroup__questionmark {
+  
+}
+
+.cmp-adaptiveform-checkboxgroup-item {
+}
+
+.cmp-adaptiveform-checkboxgroup__option__widget:focus{
+}
+
+/*******************************************************************************
+ * Copyright 2022 Adobe
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ ******************************************************************************/
+
+.cmp-adaptiveform-button {
+
+}
+
+.cmp-adaptiveform-button__text {
+
+}
+.cmp-adaptiveform-checkbox__help-container{
+  
+}
+
+.cmp-adaptiveform-button__longdescription {
+
+}
+
+.cmp-adaptiveform-button__shortdescription {
+
+}
+
+.cmp-adaptiveform-button__questionmark {
+}
+/*
+ *  Copyright 2021 Adobe
+ *
+ *  Licensed under the Apache License, Version 2.0 (the "License");
+ *  you may not use this file except in compliance with the License.
+ *  You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ *  Unless required by applicable law or agreed to in writing, software
+ *  distributed under the License is distributed on an "AS IS" BASIS,
+ *  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ *  See the License for the specific language governing permissions and
+ *  limitations under the License.
+ */
+/** @define image */
+
+/*******************************************************************************
+ * Copyright 2022 Adobe
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ ******************************************************************************/
+
+.cmp-adaptiveform-dropdown {
+
+}
+
+.cmp-adaptiveform-dropdown__widget {
+
+}
+
+
+.cmp-adaptiveform-dropdown__label {
+
+}
+.cmp-adaptiveform-dropdown__label-container{
+  
+}
+
+.cmp-adaptiveform-dropdown__longdescription {
+
+}
+
+.cmp-adaptiveform-dropdown__shortdescription {
+
+}
+
+.cmp-adaptiveform-dropdown__questionmark {
+ 
+}
+.cmp-accordion{
+
+}
+.cmp-accordion__label{
+
+}
+.cmp-accordion__label-container{
+
+}
+.cmp-accordion__item{
+
+}
+.cmp-accordion__header{
+
+}
+.cmp-accordion__button{
+
+}
+.cmp-accordion__button.cmp-accordion__button--expanded{
+
+}
+.cmp-accordion__title{
+
+}
+.cmp-accordion__icon{
+
+}
+.cmp-accordion__panel{
+
+}
+.cmp-accordion__panel.cmp-accordion__panel--expanded{
+  
+}
+.cmp-accordion__panel.cmp-accordion__panel--hidden{
+  
+}
+.cmp-accordion__longdescription {
+
+}
+.cmp-accordion__shortdescription {
+ 
+}
+.cmp-accordion__questionmark{
+ 
+}
+.cmp-tabs{
+
+}
+.cmp-tabs__label{
+
+}
+.cmp-tabs__label-container{
+  
+}
+.cmp-tabs__tablist{
+
+}
+.cmp-tabs__tab{
+
+}
+.cmp-tabs__tab.cmp-tabs__tab--active{
+
+}
+.cmp-tabs__tabpanel{
+
+}
+.cmp-tabs__tabpanel.cmp-tabs__tabpanel--active{
+  
+}
+.cmp-tabs__longdescription {
+
+}
+.cmp-tabs__shortdescription {
+ 
+}
+.cmp-tabs__questionmark{
+
+}
+.cmp-verticaltabs{
+
+}
+.cmp-verticaltabs__label{
+
+}
+.cmp-verticaltabs__label-container{
+  
+}
+.cmp-verticaltabs__tabs-container {
+}
+
+.cmp-verticaltabs__tablist{
+}
+
+.cmp-verticaltabs__tab{
+}
+
+.cmp-verticaltabs__tab.cmp-verticaltabs__tab--active{
+
+}
+
+.cmp-verticaltabs__tabpanel{
+  display: none;
+}
+
+.cmp-verticaltabs__tabpanel.cmp-verticaltabs__tabpanel--active{
+  display: block;
+}
+.cmp-verticaltabs__longdescription {
+
+}
+.cmp-verticaltabs__shortdescription {
+
+}
+.cmp-verticaltabs__questionmark{
+
+}
+/**
+## BEM Description
+BLOCK cmp-adaptiveform-recaptcha
+    ELEMENT cmp-adaptiveform-recaptcha__label
+    ELEMENT cmp-adaptiveform-recaptcha__widget
+    ELEMENT cmp-adaptiveform-recaptcha__errormessage
+*/
+
+.cmp-adaptiveform-recaptcha {
+
+}
+
+.cmp-adaptiveform-recaptcha__widget {
+
+}
+
+.cmp-adaptiveform-recaptcha__label {
+
+}
+
+
+
+.cmp-adaptiveform-checkbox{
+
+}
+
+.cmp-adaptiveform-checkbox__widget {
+
+}
+.cmp-adaptiveform-checkbox__help-container{
+  
+}
+.cmp-adaptiveform-checkbox__label {
+
+}
+
+.cmp-adaptiveform-checkbox__longdescription {
+
+}
+
+.cmp-adaptiveform-checkbox__shortdescription {
+
+}
+
+.cmp-adaptiveform-checkbox__questionmark {
+  
+}
+
+/*******************************************************************************
+ * Copyright 2023 Adobe
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ ******************************************************************************/
+
+.cmp-adaptiveform-fragment {
+
+}
+
+.cmp-adaptiveform-fragment__widget {
+
+}
+textarea.cmp-adaptiveform-fragment__widget {
+
+}
+
+.cmp-adaptiveform-fragment__label {
+
+}
+.cmp-adaptiveform-fragment__label-container{
+  
+}
+
+.cmp-adaptiveform-fragment__longdescription {
+}
+
+.cmp-adaptiveform-fragment__shortdescription {
+}
+
+.cmp-adaptiveform-fragment__questionmark {
+
+}
+
+.cmp-adaptiveform-fragment__placeholderContainer {
+    border-opacity: .1;
+    border-width: 1px;
+    padding: 15px;
+    font-family: Adobe Clean;
+    font-weight: normal;
+    font-size: 13px;
+    text-align: left;
+    color: #969696;
+    border-color: rgba(0,0,0,0.15);
+    border-radius: 4px;
+    background: linear-gradient(180deg,rgba(0,0,0,0.05),rgba(255,255,255,0.05),rgba(0,0,0,0.05)),
+                linear-gradient(90deg,rgba(0,0,0,0.05),rgba(255,255,255,0.05),rgba(0,0,0,0.05));
+}
+
+.cmp-adaptiveform-fragment__placeholderContainer hr {
+    width: auto;
+    height: 1px;
+    background-color: #000;
+    opacity: .25;
+    margin: 15px 0;
+    border-style: solid;
+    border-color: rgba(0,0,0,0.15);
+}
+
+.cmp-adaptiveform-fragment__fragmentTitle {
+    text-align: left;
+    color: #4b4b4b;
+    background-image: url("../../../../../libs/core/fd/components/form/fragment/v1/fragment/clientlibs/site/resources/placeholderIcon.png");
+    background-position: left center;
+    background-repeat: no-repeat;
+    padding-left: 25px;
+}
+
+.cmp-adaptiveform-switch {
+}
+
+.cmp-adaptiveform-switch__widget-label {
+}
+
+.cmp-adaptiveform-switch__label-container {
+}
+
+.cmp-adaptiveform-switch__container {
+}
+
+.cmp-adaptiveform-switch__widget {
+}
+
+.cmp-adaptiveform-switch__widget-slider {
+}
+
+.cmp-adaptiveform-switch__widget-slider:before {
+}
+
+input:checked + .cmp-adaptiveform-switch__widget-slider {
+}
+
+input:focus + .cmp-adaptiveform-switch__widget-slider {
+}
+
+input:checked + .cmp-adaptiveform-switch__widget-slider:before {
+}
+
+.cmp-adaptiveform-switch__widget-slider:before {
+}
+
+.cmp-adaptiveform-switch__longdescription {
+}
+
+.cmp-adaptiveform-switch__questionmark {
+}
+
+.cmp-adaptiveform-switch__errormessage {
+}
+
+.cmp-adaptiveform-switch__help-container .cmp-adaptiveform-switch__questionmark {
+}
+
+.cmp-adaptiveform-switch__circle-indicator {
+}
+
+.cmp-adaptiveform-switch__shortdescription {
+}
+.cmp-adaptiveform-switch__option {
+}
+.cmp-adaptiveform-switch__hide-labels .cmp-adaptiveform-switch__option--on {
+}
+.cmp-adaptiveform-switch__hide-labels .cmp-adaptiveform-switch__option--off {
+}
+.cmp-adaptiveform-switch__unhide-labels .cmp-adaptiveform-switch__option--on {
+}
+.cmp-adaptiveform-switch__unhide-labels .cmp-adaptiveform-switch__option--off {
+}
+/*******************************************************************************
+ * Copyright 2023 Adobe
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ ******************************************************************************/
+
+.cmp-adaptiveform-termsandcondition{
+
+}
+
+.cmp-adaptiveform-termsandcondition__label {
+
+}
+
+.cmp-adaptiveform-termsandcondition__content-container {
+
+}
+
+.cmp-adaptiveform-termsandcondition__content-container--modal {
+
+}
+.cmp-adaptiveform-termsandcondition__content-container--modal .cmp-adaptiveform-termsandcondition__body{
+
+}
+.cmp-adaptiveform-termsandcondition__content-container--modal .cmp-adaptiveform-termsandcondition__header{
+
+}
+.cmp-adaptiveform-termsandcondition__content-container--modal .cmp-adaptiveform-termsandcondition__header h3{
+
+}
+
+
+.cmp-adaptiveform-termsandcondition__content-container--modal .cmp-adaptiveform-termsandcondition__close-button {
+
+}
+
+.cmp-adaptiveform-termsandcondition__content-container--modal .cmp-adaptiveform-termsandcondition__content {
+
+}
+
+.cmp-adaptiveform-termsandcondition__text {
+
+}
+
+.cmp-adaptiveform-termsandcondition__link {
+
+}
+
+.cmp-adaptiveform-termsandcondition__approvalcheckbox .cmp-adaptiveform-checkbox__label{
+  cursor:pointer;
+}
+
+.cmp-adaptiveform-termsandcondition__approvalcheckbox {
+
+}
+
+
+
+
+/*******************************************************************************
+ * Copyright 2024 Adobe
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ ******************************************************************************/
+
+.cmp-adaptiveform-scribble__widget {
+
+}
+textarea.cmp-adaptiveform-scribble__widget{
+  
+}
+
+.cmp-adaptiveform-scribble__label {
+
+}
+.cmp-adaptiveform-scribble__label-container{
+  
+}
+
+.cmp-adaptiveform-scribble__longdescription {
+}
+
+.cmp-adaptiveform-scribble__shortdescription {
+}
+
+.cmp-adaptiveform-scribble__questionmark {
+
+}
+
+
+/**
+## BEM Description
+BLOCK cmp-adaptiveform-hcaptcha
+    ELEMENT cmp-adaptiveform-hcaptcha__label
+    ELEMENT cmp-adaptiveform-hcaptcha__widget
+    ELEMENT cmp-adaptiveform-hcaptcha__errormessage
+*/
+
+.cmp-adaptiveform-hcaptcha {
+
+}
+
+.cmp-adaptiveform-hcaptcha__widget {
+
+}
+
+.cmp-adaptiveform-hcaptcha__label {
+
+}
+
+/*******************************************************************************
+ * Copyright 2024 Adobe
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ ******************************************************************************/
+
+ .cmp-adaptiveform-review {
+
+ }
+ .cmp-adaptiveform-review__container {
+ }
+ .cmp-adaptiveform-review__panel{
+ }
+ .cmp-adaptiveform-review__label-container{
+ }
+ 
+ .cmp-adaptiveform-review__field{
+ }
+ .cmp-adaptiveform-review__label{
+ }
+ .cmp-adaptiveform-review__value{
+ }
+ .cmp-adaptiveform-review__edit-button{
+ }
+/**
+## BEM Description
+BLOCK cmp-adaptiveform-turnstile
+    ELEMENT cmp-adaptiveform-turnstile__label
+    ELEMENT cmp-adaptiveform-turnstile__widget
+    ELEMENT cmp-adaptiveform-turnstile__errormessage
+*/
+
+.cmp-adaptiveform-turnstile {
+
+}
+
+.cmp-adaptiveform-turnstile__widget {
+
+}
+
+.cmp-adaptiveform-turnstile__label {
+
+}
+
+/*******************************************************************************
+ * Copyright 2025 Adobe
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ ******************************************************************************/
+.cmp-adaptiveform-datetime {
+
+}
+
+.cmp-adaptiveform-datetime__widget {
+
+}
+
+.cmp-adaptiveform-datetime__label {
+
+}
+.cmp-adaptiveform-datetime__label-container{
+
+}
+
+.cmp-adaptiveform-datetime__longdescription {
+
+}
+
+.cmp-adaptiveform-datetime__shortdescription {
+
+}
+
+.cmp-adaptiveform-datetime__questionmark {
+
+}
+
+.cmp-adaptiveform-datetime__questionmark {
+
+}

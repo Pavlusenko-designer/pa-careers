@@ -1,0 +1,95 @@
+/* Homepage — recommended job cards layout */
+
+.pa-recommended-jobs-wrap {
+  --pa-jobs-primary: #0052a5;
+  --pa-jobs-navy: #001849;
+  --pa-jobs-border: #d4d4d4;
+  margin: 0;
+}
+
+.pa-vd-stack .pa-recommended-jobs__header {
+  margin-bottom: 1rem;
+}
+
+.pa-vd-stack .pa-recommended-jobs__footer {
+  margin-top: 1rem;
+}
+
+.pa-recommended-jobs__header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  margin-bottom: 1.5rem;
+}
+
+.pa-recommended-jobs__title-wrap {
+  width: 100%;
+  max-width: none !important;
+  margin: 0 0 0.5rem;
+  text-align: center;
+}
+
+.pa-recommended-jobs__title-wrap h2 {
+  max-width: none;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.pa-recommended-jobs__sub {
+  margin: 0 auto;
+  max-width: 36rem;
+  line-height: 1.5;
+  color: #45464f;
+}
+
+.pa-recommended-jobs__list {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1rem;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.pa-recommended-jobs-wrap .pa-jobs-card {
+  margin: 0;
+  height: 100%;
+  border: 1px solid #d4d4d4;
+}
+
+.pa-recommended-jobs-wrap .pa-jobs-card__inner {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.pa-recommended-jobs-wrap .pa-jobs-card__description {
+  flex: 1 1 auto;
+}
+
+.pa-recommended-jobs__footer {
+  margin-top: 1.5rem;
+  text-align: center;
+}
+
+.pa-recommended-jobs__empty {
+  grid-column: 1 / -1;
+  padding: 1.5rem;
+  text-align: center;
+  color: #45464f;
+  background: #f5f6f8;
+  border: 1px solid #d4d4d4;
+  border-radius: 0.25rem;
+}
+
+.pa-recommended-jobs__empty a {
+  color: #0052a5;
+  font-weight: 600;
+}
+
+@media (max-width: 991.98px) {
+  .pa-recommended-jobs__list {
+    grid-template-columns: 1fr;
+  }
+}
