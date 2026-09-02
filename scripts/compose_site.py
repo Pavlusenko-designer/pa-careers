@@ -28,6 +28,26 @@ from site_pages import (
 
 ASSET_PREFIX_PATTERN = re.compile(r"\./(?:[^\"<>]+?)_files/")
 
+CAPTURED_SCRIPT_PATTERN = re.compile(
+    r"\s*<script\b[^>]*>[\s\S]*?</script>\s*",
+    re.IGNORECASE,
+)
+
+CAPTURED_RUNTIME_TAIL_PATTERN = re.compile(
+    r'<div id="goog-gt-tt"[\s\S]*?(?=</body>)',
+    re.IGNORECASE,
+)
+
+CAPTURED_EXTENSION_STYLE_PATTERN = re.compile(
+    r'\s*<style\s+type="text/css">:root\s+\[[\s\S]*?</style>\s*',
+    re.IGNORECASE,
+)
+
+CAPTURED_TRANSLATION_CSS_PATTERN = re.compile(
+    r'\s*<link\b[^>]*href="\./assets/m=el_main_css"[^>]*>\s*',
+    re.IGNORECASE,
+)
+
 SIDE_NAV_PATTERN = re.compile(
     r"\s*<div class=\"experiencefragment xf-side-navigation\">.*?"
     r"(?=<div class=\"container responsivegrid cmp-bootstrap-container)",
@@ -132,6 +152,14 @@ JOBS_CSS_LINK = (
 )
 JOBS_JS_SCRIPT = (
     '<script id="jobs-search-js" src="./assets/jobs-search.js" defer></script>\n'
+)
+
+JOB_DETAIL_CSS_LINK = (
+    '<link id="job-detail-css" rel="stylesheet" '
+    'href="./assets/job-detail.css?v=10" type="text/css">\n'
+)
+JOB_DETAIL_JS_SCRIPT = (
+    '<script id="job-detail-js" src="./assets/job-detail.js?v=4" defer></script>\n'
 )
 
 RESUME_CSS_LINK = (
@@ -315,6 +343,149 @@ def all_jobs_main_html() -> str:
     </section>
   </div>
 </div>
+"""
+
+
+def job_detail_main_html() -> str:
+    return """
+<article class="aem-GridColumn aem-GridColumn--default--12 pa-jd-page" id="pa-jd-app">
+  <section class="pa-jd-hero" aria-labelledby="pa-jd-title">
+    <div class="pa-jd-hero__inner">
+      <a class="pa-jd-back" href="all-jobs.html"><i class="ri-arrow-left-line" aria-hidden="true"></i> Back to search results</a>
+      <p class="pa-jd-eyebrow">Commonwealth of Pennsylvania careers</p>
+      <h1 id="pa-jd-title" data-job-title>Senior Operations Manager</h1>
+      <ul class="pa-jd-meta" aria-label="Job details">
+        <li><i class="ri-map-pin-line" aria-hidden="true"></i><span>Harrisburg, Pennsylvania</span></li>
+        <li><i class="ri-briefcase-line" aria-hidden="true"></i><span>Administration and Management</span></li>
+        <li><i class="ri-time-line" aria-hidden="true"></i><span>Full-time</span></li>
+        <li><i class="ri-hashtag" aria-hidden="true"></i><span>Job ID 02481</span></li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="pa-jd-overview" aria-labelledby="pa-jd-overview-title">
+    <h2 id="pa-jd-overview-title" class="sr-only">Job overview</h2>
+    <div class="pa-jd-overview__content">
+      <div class="pa-jd-tabs" role="tablist" aria-label="Job details tabs">
+        <button class="pa-jd-tab is-active" type="button" role="tab" aria-selected="true" aria-controls="pa-jd-summary" data-jd-tab="summary"><i class="ri-sparkling-line" aria-hidden="true"></i> Summary</button>
+        <button class="pa-jd-tab" type="button" role="tab" aria-selected="false" aria-controls="pa-jd-responsibilities" data-jd-tab="responsibilities">Responsibilities</button>
+        <button class="pa-jd-tab" type="button" role="tab" aria-selected="false" aria-controls="pa-jd-education" data-jd-tab="education">Education</button>
+        <button class="pa-jd-tab" type="button" role="tab" aria-selected="false" aria-controls="pa-jd-skills" data-jd-tab="skills">Skills</button>
+      </div>
+      <div class="pa-jd-panels">
+        <div class="pa-jd-panel is-active" id="pa-jd-summary" role="tabpanel" data-jd-panel="summary">
+          <p>Lead a team that improves how Commonwealth operations deliver reliable services. You will partner across programs, finance, technology, and customer teams to turn service insights into practical operating plans.</p>
+        </div>
+        <div class="pa-jd-panel" id="pa-jd-responsibilities" role="tabpanel" data-jd-panel="responsibilities" hidden>
+          <ul><li>Set measurable operating goals and coach a team of service delivery professionals.</li><li>Map cross-agency workflows and remove friction for residents and employees.</li><li>Turn service, staffing, and budget data into clear recommendations.</li><li>Lead continuous-improvement initiatives from discovery through adoption.</li></ul>
+        </div>
+        <div class="pa-jd-panel" id="pa-jd-education" role="tabpanel" data-jd-panel="education" hidden>
+          <p>Equivalent practical experience in operations, service delivery, public administration, military service, workforce training, or team leadership is welcomed. A degree is not required.</p>
+        </div>
+        <div class="pa-jd-panel" id="pa-jd-skills" role="tabpanel" data-jd-panel="skills" hidden>
+          <ul><li>Operations strategy and process improvement</li><li>People leadership and cross-functional facilitation</li><li>Data-informed planning and clear executive communication</li><li>Comfort adopting new technology and improving digital workflows</li></ul>
+        </div>
+      </div>
+    </div>
+    <figure class="pa-jd-overview__media">
+      <img src="./assets/it-home" alt="Commonwealth employees collaborating around a digital operations display">
+    </figure>
+  </section>
+
+  <div class="pa-jd-action-bar" aria-label="Job actions">
+    <button class="pa-jd-share" id="pa-jd-share" type="button" aria-expanded="false" aria-controls="pa-jd-share-menu"><i class="ri-share-line" aria-hidden="true"></i> Share</button>
+    <div class="pa-jd-share-menu" id="pa-jd-share-menu" hidden><button type="button" data-copy-job-link><i class="ri-link" aria-hidden="true"></i> Copy job link</button><button type="button" data-share-email><i class="ri-mail-line" aria-hidden="true"></i> Email</button></div>
+    <button class="pa-jd-apply" type="button" data-open-apply>Apply now</button>
+    <button class="pa-jd-save" id="pa-jd-save" type="button" aria-pressed="false"><i class="ri-heart-line" aria-hidden="true"></i><span>Save job</span></button>
+  </div>
+
+  <section class="pa-jd-description" aria-labelledby="pa-jd-description-title">
+    <h2 id="pa-jd-description-title">Job description</h2>
+    <div class="pa-jd-description__body is-collapsed" id="pa-jd-description-body">
+      <h3>Make operations work better for Pennsylvanians</h3>
+      <p>The Commonwealth is looking for a Senior Operations Manager who can connect people, processes, and data to improve public service delivery. This role leads a small team and works with partners across agencies to make complex work more reliable, transparent, and easier to use.</p>
+      <h3>What you will do</h3>
+      <ul><li>Own operating plans, service-level goals, and improvement roadmaps for assigned programs.</li><li>Partner with program leaders to clarify priorities, risks, staffing needs, and delivery milestones.</li><li>Use qualitative feedback and operating data to identify barriers and recommend practical changes.</li><li>Build repeatable processes, decision records, and reporting that help teams move with confidence.</li><li>Coach team members, support inclusive collaboration, and communicate progress to senior leaders.</li></ul>
+      <h3>What helps you succeed</h3>
+      <ul><li>Five or more years improving operations, services, programs, or customer experiences.</li><li>Experience leading cross-functional work and translating ambiguity into an actionable plan.</li><li>Strong analytical judgment and clear written and verbal communication.</li><li>Comfort adopting new technology and improving digital workflows.</li><li>Equivalent practical experience in operations, public service, military service, workforce training, or team leadership. A degree is not required.</li></ul>
+      <h3>Benefits</h3>
+      <p>Commonwealth employees have access to medical coverage, retirement benefits, paid leave, flexible work options for eligible roles, and professional-development opportunities.</p>
+      <h3>Equal opportunity</h3>
+      <p>We welcome applicants with different backgrounds, experiences, and paths to skill. The Commonwealth of Pennsylvania is committed to a workplace where everyone is treated with dignity and has an equitable opportunity to contribute.</p>
+    </div>
+    <button class="pa-jd-read-more" id="pa-jd-read-more" type="button" aria-expanded="false" aria-controls="pa-jd-description-body"><i class="ri-menu-unfold-line" aria-hidden="true"></i><span>Read full job description</span><i class="ri-arrow-down-s-line" aria-hidden="true"></i></button>
+  </section>
+
+  <section class="pa-jd-recommendations" aria-labelledby="pa-jd-recommendations-title">
+    <header><p>Explore more opportunities</p><h2 id="pa-jd-recommendations-title">Similar jobs</h2></header>
+    <div class="pa-jd-recommendation-grid">
+      <article><div><span>Administration</span><button type="button" aria-label="Save Business Operations Manager"><i class="ri-heart-line" aria-hidden="true"></i></button></div><h3>Business Operations Manager</h3><p><i class="ri-map-pin-line" aria-hidden="true"></i> Harrisburg, Pennsylvania</p><p>Guide shared services, performance reporting, and continuous improvement across program teams.</p><a href="all-jobs.html?keyword=Operations">View job</a></article>
+      <article><div><span>Program Management</span><button type="button" aria-label="Save Service Delivery Program Manager"><i class="ri-heart-line" aria-hidden="true"></i></button></div><h3>Service Delivery Program Manager</h3><p><i class="ri-map-pin-line" aria-hidden="true"></i> Philadelphia, Pennsylvania</p><p>Coordinate resident-facing programs and help teams deliver consistent service outcomes.</p><a href="all-jobs.html?keyword=Management">View job</a></article>
+      <article><div><span>Strategy</span><button type="button" aria-label="Save Continuous Improvement Lead"><i class="ri-heart-line" aria-hidden="true"></i></button></div><h3>Continuous Improvement Lead</h3><p><i class="ri-map-pin-line" aria-hidden="true"></i> Pennsylvania · Hybrid</p><p>Use data and facilitation to simplify workflows and build durable operating practices.</p><a href="all-jobs.html?keyword=Improvement">View job</a></article>
+    </div>
+  </section>
+
+  <section class="pa-jd-resume" aria-labelledby="pa-jd-resume-title">
+    <p>Recommended</p><h2 id="pa-jd-resume-title">Get matched with Commonwealth jobs</h2><span>Upload your resume to see how your skills and experience align with this role.</span><button type="button" data-open-match><i class="ri-file-user-line" aria-hidden="true"></i> Check my match</button>
+  </section>
+</article>
+
+<div class="pa-jd-modal-backdrop pa-jd-match-backdrop" id="pa-jd-match-modal" hidden>
+  <section class="pa-jd-modal pa-jd-match-modal" role="dialog" aria-modal="true" aria-labelledby="pa-jd-match-title">
+    <button class="pa-jd-modal__close" type="button" aria-label="Close resume match" data-close-match><i class="ri-close-line" aria-hidden="true"></i></button>
+    <div data-match-upload-view>
+      <p>Resume match</p>
+      <h2 id="pa-jd-match-title">See how you match <span data-job-title>Senior Operations Manager</span></h2>
+      <p class="pa-jd-match-intro">Choose a PDF, DOC, or DOCX resume. Your file is used only to calculate your match and is not added to your profile until you apply.</p>
+      <input class="sr-only" type="file" id="pa-jd-resume-file" accept=".pdf,.doc,.docx,application/pdf,application/msword,application/vnd.openxmlformats-officedocument.wordprocessingml.document">
+      <label class="pa-jd-resume-drop" for="pa-jd-resume-file">
+        <i class="ri-upload-cloud-2-line" aria-hidden="true"></i>
+        <strong data-resume-file-name>Choose a resume</strong>
+        <span>or drag and drop it here · 5 MB max</span>
+      </label>
+      <button class="pa-jd-sample-resume" type="button" data-use-sample-resume>Use my saved resume</button>
+      <p class="pa-jd-match-status" data-match-status role="status" aria-live="polite">Select a file to continue.</p>
+      <button class="pa-jd-apply pa-jd-analyze" type="button" data-run-match disabled><i class="ri-sparkling-2-line" aria-hidden="true"></i><span>Analyze resume</span></button>
+    </div>
+    <div class="pa-jd-match-result" data-match-result-view hidden>
+      <div class="pa-jd-match-result__score" aria-label="88 percent match"><strong>88%</strong><span>match</span></div>
+      <p>Resume match</p>
+      <h2 tabindex="-1" data-match-result-title>You’re a strong match for <span data-job-title>Senior Operations Manager</span></h2>
+      <p class="pa-jd-match-result__summary">Your experience aligns with five of the six capabilities that matter most for this role.</p>
+      <div class="pa-jd-pathway-match">
+        <div><i class="ri-route-line" aria-hidden="true"></i><span>Career pathway match</span><strong>HIGH</strong></div>
+        <p><strong>1,240 people</strong> with experience in roles like Operations Program Lead have successfully transitioned into this type of role.</p>
+        <small>Based on Pennsylvania workforce and career pathway data.</small>
+      </div>
+      <ul class="pa-jd-match-strengths" aria-label="Matched capabilities">
+        <li><i class="ri-check-line" aria-hidden="true"></i> Operations strategy</li>
+        <li><i class="ri-check-line" aria-hidden="true"></i> Team leadership</li>
+        <li><i class="ri-check-line" aria-hidden="true"></i> Process improvement</li>
+        <li><i class="ri-check-line" aria-hidden="true"></i> Cross-functional delivery</li>
+      </ul>
+      <div class="pa-jd-match-note"><i class="ri-graduation-cap-line" aria-hidden="true"></i><span>Your practical experience is recognized. A degree is not required for this role.</span></div>
+      <div class="pa-jd-match-actions"><button class="pa-jd-apply" type="button" data-match-apply>Continue to apply</button><button class="pa-jd-save" type="button" data-close-match>Done</button></div>
+    </div>
+  </section>
+</div>
+
+<div class="pa-jd-modal-backdrop" id="pa-jd-apply-modal" hidden>
+  <section class="pa-jd-modal" role="dialog" aria-modal="true" aria-labelledby="pa-jd-apply-title">
+    <button class="pa-jd-modal__close" type="button" aria-label="Close application"><i class="ri-close-line" aria-hidden="true"></i></button>
+    <p>Application</p>
+    <h2 id="pa-jd-apply-title">Apply for <span data-job-title>Senior Operations Manager</span></h2>
+    <p>Your profile will be submitted to the Commonwealth hiring team. Matching is optional and never blocks your application.</p>
+    <dl class="pa-jd-application-summary">
+      <div><dt>Candidate</dt><dd>Alex Jordan</dd></div>
+      <div><dt>Resume</dt><dd data-application-resume>Not attached</dd></div>
+      <div><dt>STARS match</dt><dd data-application-fit>Not calculated</dd></div>
+      <div><dt>Career pathway</dt><dd data-application-pathway>Available after resume match</dd></div>
+    </dl>
+    <div class="pa-jd-apply-pathway-note" data-apply-pathway-note hidden><i class="ri-route-line" aria-hidden="true"></i><p><strong>High pathway fit.</strong> 1,240 people with experience in roles like Operations Program Lead have successfully transitioned into this type of role.</p></div>
+    <div class="pa-jd-apply-actions"><button class="pa-jd-save" type="button" data-apply-check-match>Check match first</button><button class="pa-jd-apply" type="button" data-confirm-apply>Submit application</button></div>
+  </section>
+</div>
+<div class="pa-jd-toast" id="pa-jd-toast" role="status" aria-live="polite"><i class="ri-check-line" aria-hidden="true"></i><span>Job saved</span></div>
 """
 
 
@@ -623,8 +794,19 @@ def prepare_agency_content(html: str) -> str:
 
 def transform_html(source: Path, output: Path, active: str) -> None:
     html = source.read_text(encoding="utf-8")
+    html = CAPTURED_EXTENSION_STYLE_PATTERN.sub("\n", html)
+    html = CAPTURED_TRANSLATION_CSS_PATTERN.sub("\n", html)
+
+    # These two prototype routes are fully driven by the small local scripts
+    # injected below. Remove captured analytics, translation, AEM and survey
+    # runtimes that otherwise call production endpoints and fail offline.
+    if active in {"jobs", "job-detail"}:
+        html = CAPTURED_SCRIPT_PATTERN.sub("\n", html)
+        html = CAPTURED_RUNTIME_TAIL_PATTERN.sub("", html)
+        html = re.sub(r"^[ \t]+$", "", html, flags=re.MULTILINE)
 
     html = ASSET_PREFIX_PATTERN.sub("./assets/", html)
+    html = CAPTURED_TRANSLATION_CSS_PATTERN.sub("\n", html)
     html = html.replace('href="https://www.pa.gov/"', 'href="index.html"')
     html = html.replace('href="https://www.pa.gov/agencies/employment"', 'href="index.html"')
     html = SKIP_AGENCY_NAV_PATTERN.sub("\n", html)
@@ -642,8 +824,9 @@ def transform_html(source: Path, output: Path, active: str) -> None:
 
     html = SIDE_NAV_PATTERN.sub("\n", html)
 
+    nav_active = "jobs" if active == "job-detail" else active
     html = NAV_CONTAINER_PATTERN.sub(
-        lambda m: m.group(1) + nav_html(active) + m.group(2), html, count=1
+        lambda m: m.group(1) + nav_html(nav_active) + m.group(2), html, count=1
     )
     html = BREADCRUMB_PATTERN.sub(breadcrumb_html(active), html, count=1)
     if active.startswith("benefits-"):
@@ -670,6 +853,11 @@ def transform_html(source: Path, output: Path, active: str) -> None:
         html = HEADER_BANNER_MODAL_PATTERN.sub("\n", html, count=1)
         html = MAIN_BODY_AFTER_BREADCRUMB_PATTERN.sub(
             lambda m: m.group(1) + all_jobs_main_html(), html, count=1
+        )
+    if active == "job-detail":
+        html = HEADER_BANNER_MODAL_PATTERN.sub("\n", html, count=1)
+        html = MAIN_BODY_AFTER_BREADCRUMB_PATTERN.sub(
+            lambda m: m.group(1) + job_detail_main_html(), html, count=1
         )
     if active == "careers":
         html = IN_GRID_RESUME_WIDGET_PATTERN.sub("", html, count=1)
@@ -743,6 +931,21 @@ def transform_html(source: Path, output: Path, active: str) -> None:
             '<meta name="twitter:title" content="Who We Are">',
             '<meta name="twitter:title" content="All Jobs">',
         )
+    if active == "job-detail":
+        html = re.sub(
+            r"<title>[^<]+</title>",
+            "<title>Senior Operations Manager | Careers</title>",
+            html,
+            count=1,
+        )
+        html = html.replace(
+            '<meta property="og:title" content="Who We Are">',
+            '<meta property="og:title" content="Senior Operations Manager">',
+        )
+        html = html.replace(
+            '<meta name="twitter:title" content="Who We Are">',
+            '<meta name="twitter:title" content="Senior Operations Manager">',
+        )
     html = re.sub(
         r'href="https://www\.pa\.gov/agencies/employment[^"]*#content"',
         'href="#content"',
@@ -765,6 +968,8 @@ def transform_html(source: Path, output: Path, active: str) -> None:
         extra_styles += f"    {JOBS_CSS_LINK}"
     if active == "jobs" and 'id="resume-search-css"' not in html:
         extra_styles += f"    {RESUME_CSS_LINK}"
+    if active == "job-detail" and 'id="job-detail-css"' not in html:
+        extra_styles += f"    {JOB_DETAIL_CSS_LINK}"
     if active == "careers" and 'id="resume-search-css"' not in html:
         extra_styles += f"    {RESUME_CSS_LINK}"
     if active == "careers" and 'id="jobs-search-css"' not in html:
@@ -781,6 +986,8 @@ def transform_html(source: Path, output: Path, active: str) -> None:
 
     if active == "jobs" and 'id="jobs-search-js"' not in html:
         html = html.replace("</body>", f"{JOBS_JS_SCRIPT}</body>", 1)
+    if active == "job-detail" and 'id="job-detail-js"' not in html:
+        html = html.replace("</body>", f"{JOB_DETAIL_JS_SCRIPT}</body>", 1)
     if active == "jobs":
         if RESUME_MODAL_BLOCK_PATTERN.search(html):
             html = RESUME_MODAL_BLOCK_PATTERN.sub(

@@ -80,6 +80,12 @@ PAGES = [
         "active": "jobs",
     },
     {
+        "source": SOURCES / "Who We Are.html",
+        "output": ROOT / "job-detail.html",
+        "assets_from": SOURCES / "Who We Are_files",
+        "active": "job-detail",
+    },
+    {
         "source": SOURCES / "Our Benefits.html",
         "output": ROOT / "our-benefits.html",
         "assets_from": SOURCES / "Our Benefits_files",

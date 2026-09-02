@@ -604,6 +604,46 @@
   padding: 1rem 1.15rem;
 }
 
+.pa-jobs-card__pathway {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  margin: -0.15rem 0 0.65rem;
+}
+
+.pa-jobs-card__pathway span {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  color: var(--pa-jobs-primary, #0052a5);
+  font-size: 0.75rem;
+  font-weight: 700;
+}
+
+.pa-jobs-card__pathway i {
+  font-size: 1rem;
+}
+
+.pa-jobs-card__pathway strong {
+  padding: 0.2rem 0.5rem;
+  border-radius: 999px;
+  background: #dcefe5;
+  color: #205c39;
+  font-size: 0.6875rem;
+  letter-spacing: 0.06em;
+}
+
+.pa-jobs-card__pathway-copy {
+  margin: -0.25rem 0 0.75rem;
+  padding: 0.6rem 0.75rem;
+  border-left: 3px solid var(--pa-jobs-primary, #0052a5);
+  background: #f2f7fc;
+  color: #3f5063;
+  font-size: 0.8125rem;
+  line-height: 1.45;
+}
+
 .pa-jobs-card__title {
   margin: 0 0 0.35rem;
   font-family: "Roboto Slab", Georgia, serif;

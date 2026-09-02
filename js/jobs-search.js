@@ -490,7 +490,12 @@
 
     list.innerHTML = pageJobs
       .map(function (job) {
-        var link = job.applyUrl || applyUrlFor(job);
+        var link = state.profileMatch
+          ? "job-detail.html?job=" + encodeURIComponent(job.title || "Commonwealth opportunity")
+          : job.applyUrl || applyUrlFor(job);
+        var linkAttrs = state.profileMatch || job.isPrototype
+          ? ""
+          : ' target="_blank" rel="noopener noreferrer"';
         var meta = [];
         if (job.location) meta.push(escapeHtml(job.location));
         if (job.jobId) meta.push("Job ID " + escapeHtml(job.jobId));
@@ -510,13 +515,18 @@
             escapeHtml(job.description) +
             "</p>"
           : "";
+        var pathwayMatch = state.profileMatch
+          ? '<div class="pa-jobs-card__pathway"><span><i class="ri-route-line" aria-hidden="true"></i> Career pathway match</span><strong>HIGH</strong></div>' +
+            '<p class="pa-jobs-card__pathway-copy">People from your occupational background move into this type of role.</p>'
+          : "";
 
         return (
           '<li class="pa-jobs-card" role="listitem">' +
           '<div class="pa-jobs-card__inner">' +
+          pathwayMatch +
           '<h3 class="pa-jobs-card__title"><a href="' +
           escapeHtml(link) +
-          '" target="_blank" rel="noopener noreferrer">' +
+          '"' + linkAttrs + '>' +
           escapeHtml(job.title || "Untitled") +
           "</a></h3>" +
           metaLine +
@@ -661,6 +671,23 @@
       })
       .then(function (data) {
         var raw = Array.isArray(data) ? data : data.jobs || [];
+        var prototypeTitle = new URLSearchParams(window.location.search).get("job");
+        if (prototypeTitle) {
+          raw = [{
+            occupationalGroup: "Administration and Management",
+            jobFamily: "Operations Management",
+            jobCode: "2481",
+            title: prototypeTitle,
+            location: "Harrisburg, Pennsylvania",
+            payScaleType: "MA",
+            bargainingUnit: "Non-Union",
+            salaryRange: "$95,000.00 - $125,000.00",
+            postedDate: new Date().toISOString().slice(0, 10),
+            description: "Lead cross-functional teams and improve how Commonwealth operations deliver reliable services. Equivalent practical experience is welcomed.",
+            applyUrl: "job-detail.html?job=" + encodeURIComponent(prototypeTitle),
+            isPrototype: true
+          }].concat(raw);
+        }
         state.jobs = enrichJobs(raw);
         applyFilters();
       })

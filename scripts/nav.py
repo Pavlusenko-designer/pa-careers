@@ -189,6 +189,12 @@ def breadcrumb_html(active: str) -> str:
         items = _breadcrumb_link("Careers", "index.html", 1) + _breadcrumb_active(
             "All Jobs", 2
         )
+    elif active == "job-detail":
+        items = (
+            _breadcrumb_link("Careers", "index.html", 1)
+            + _breadcrumb_link("All Jobs", "all-jobs.html", 2)
+            + _breadcrumb_active("Senior Operations Manager", 3)
+        )
     elif active == "benefits":
         items = _breadcrumb_link("Careers", "index.html", 1) + _breadcrumb_active(
             "Our Benefits", 2
